@@ -2,9 +2,14 @@
 
 Yleisiä linkkejä:
 
-* [Linkki sovellukseeni](https://www.cs.helsinki.fi)
-* [Linkki dokumentaatiooni](https://www.github.com)
+* [Testaus alusta (users.cs)](antthaap.users.cs.helsinki.fi/tsoha)
+* [Dokumentaatio](doc/doc_markdown/dokumentaatio.md)
+Pdf-versio dokumentaatiosta: [pdf](doc/dokumentaatio.pdf)
 
-## Työn aihe
+## Aihe: Asiakaskäyntikirjausjärjestelmä
 
-Laita tähän aihekuvaus tai [linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Pokemon-kanta.html) 
+Järjestelmällä pitää kirjaa asiakkaista, työntekijöistä ja työntekijöiden suorittamista asiakaskäynneistä.
+
+Tarkoituksena on helpottaa yrityksen kirjanpitoa työntekijöiden asiakaskäynneistä ja luoda työntekjöille helppokäyttöinen portaali, johon he voivat kirjata omia asiakskäyntejään, muokata asiakkaiden tietoja ja lisätä uusia työntekijöitä. Mahdollisesti järjestelmällä voi tulevaisuudessa luoda automaattisesti laskut asiakkaille ja palkkaerittelyt työntekijöille.
+
+[Lue lisää](doc/doc_markdown/dokumentaatio.md)
