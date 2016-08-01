@@ -13,10 +13,13 @@ Järjestelmä toteutetaan php:lla ja tietokanta toimii PostgreSQL:llä. Toiminta
 
 ## Käyttötapaukset 
 
-* Asiakkaan lisääminen - johto/työntekijä
-* Asiakkaan tietojen muokkaaminen - johto/työntekijä
-* Asiakaskäynnin lisääminen - työntekijä
-* Asiakaskäynnin muokkaaminen - työntekijä
+* Asiakkaan lisääminen - työntekijä/johto
+* Asiakkaan tietojen muokkaaminen - työntekijä/johto
+* Asiakkaan tarkastelu - työntekijä/johto
+* Asiakaskäynnin lisääminen - työntekijä/johto
+* Asiakaskäynnin muokkaaminen - työntekijä/johto
+* Asiakaskäynnin tarkastelu - työntekijä/johto
+* Asiakaskäyntien haku - työntekijä/johto
 
 (toteutetaan jos kerkiää: )
 
