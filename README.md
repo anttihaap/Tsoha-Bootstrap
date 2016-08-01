@@ -2,7 +2,7 @@
 
 Yleisiä linkkejä:
 
-* [Testaus alusta (users.cs)](antthaap.users.cs.helsinki.fi/tsoha)
+* [Testaus alusta (users.cs)](http://antthaap.users.cs.helsinki.fi/tsoha/)
 * [Dokumentaatio](doc/doc_markdown/dokumentaatio.md)
 Pdf-versio dokumentaatiosta: [pdf](doc/dokumentaatio.pdf)
 
