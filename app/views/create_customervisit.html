@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Luo asiakaskäynti</h1>
+    <form>
+      <div class="form-group">
+        <label for="asiakas">Asiakas</label>
+        <select class="form-control" id="sel1">
+          {% for asiakas in asiakkaat %}
+          <option>{{asiakas.nimi}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Päivämäärä</label>
+        <input type="text" class="form-control" value="">
+      </div>
+      <div class="form-group">
+        <label>Käynnin alkamisaika</label>
+        <input type="text" class="form-control" value="">
+      </div>
+        <div class="form-group">
+        <label>Käynnin loppumisaika</label>
+        <input type="text" class="form-control" value="">
+      </div>
+      <div class="form-group">
+        <label for="kuvaus">Kuvaus</label>
+        <textarea class="form-control" rows="7" id="comment"></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Luo</button>
+      </div>
+    </form>
+{% endblock %}

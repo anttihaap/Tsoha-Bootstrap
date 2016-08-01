@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Muokkaa asiakkaan {{asiakas.nimi}} tietoja</h1>
+
+  <form>
+    <div class="form-group">
+      <label>Nimi</label>
+      <input type="text" class="form-control" value="{{asiakas.nimi}}">
+    </div>
+    <div class="form-group">
+      <label>Osoite</label>
+      <input type="text" class="form-control" value="{{asiakas.osoite}}">
+    </div>
+    <div class="form-group">
+      <label>Kaupunki</label>
+      <input type="text" class="form-control" value="{{asiakas.kaupunki}}">
+    </div>
+    <div class="form-group">
+      <label>Postinumero</label>
+      <input type="text" class="form-control" value="{{asiakas.postinumero}}">
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+  </form>
+{% endblock %}

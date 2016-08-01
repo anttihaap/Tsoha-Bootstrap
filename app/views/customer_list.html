@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Asiakkaat</h1>
+
+<p>
+  <a href="{{base_path}}/customer/add" class="btn btn-success">Lisää asiakas</a>
+</p>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Nimi</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for asiakas in asiakkaat %}
+    <tr>
+      <td><a href="#">{{asiakas.nimi}}</a></td>
+      <th><a class="btn btn-default btn-sm" href="{{base_path}}/customer/edit/{{asiakas.id}}">Muokkaa tietoja</a></th>
+    </tr> 
+    {% endfor %}
+
+  </tbody>
+</table>
+{% endblock %}
