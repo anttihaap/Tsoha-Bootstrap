@@ -15,13 +15,13 @@ CREATE TABLE Customer(
 CREATE TABLE Employee(
 	id SERIAL PRIMARY KEY,
 	name varchar(50) NOT NULL,
-   user_id INTEGER REFERENCES User
+   user_id INTEGER REFERENCES User(id)
 );
 
 CREATE TABLE Manager(
    id SERIAL PRIMARY KEY,
    name varchar(50) NOT NULL,
-   user_id INTEGER REFERENCES User
+   user_id INTEGER REFERENCES User(id)
 );
 
 CREATE TABLE Customervisit(

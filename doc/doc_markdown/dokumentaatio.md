@@ -9,7 +9,7 @@ Järjestelmä toteutetaan php:lla ja tietokanta toimii PostgreSQL:llä. Toiminta
 ## Käyttäjäryhmät
 
 * Työntekijä - suorittaa fyysisesti asiakaskäynnit, jotka hän kirjaa ylös järjestelmään.
-* Johto - hallinnoi työntekijöitä: voi lisätä työntekijöitä, muuttaa työntekijöiden käyttäjätunnusten tietoja.
+* Hallinto - hallinnoi työntekijöitä: voi lisätä työntekijöitä, muuttaa työntekijöiden käyttäjätunnusten tietoja.
 
 ## Käyttötapaukset
 
@@ -18,11 +18,12 @@ Järjestelmä toteutetaan php:lla ja tietokanta toimii PostgreSQL:llä. Toiminta
 * Asiakkaan lisääminen - työntekijä/hallinto
 * Asiakkaan tietojen muokkaaminen - työntekijä/hallinto
 * Asiakkaan tarkastelu - työntekijä/hallinto
+ * Listaa asiakkaan tiedot ja listaa asiakkaan asiakaskäynnit järjestettynä ajanjakson mukaan.
 * Asiakaskäynnin lisääminen - työntekijä/hallinto
 * Asiakaskäynnin muokkaaminen - työntekijä/hallinto
 * Asiakaskäynnin tarkastelu - työntekijä/hallinto
 * Asiakaskäyntien haku - työntekijä/hallinto
- * Tietoja voidaan hakea asiakkaan ja ajanjakson perusteella.
+ * Tietoja voidaan hakea työntekijän, asiakkaan ja ajan perusteella
 
 (toteutetaan jos kerkiää: )
 
