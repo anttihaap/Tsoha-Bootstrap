@@ -1,27 +1,28 @@
-CREATE TABLE Kayttaja(
+CREATE TABLE User(
 	id SERIAL PRIMARY KEY,
-	nimi varchar(50) NOT NULL,
-	salasana varchar(50) NOT NULL,
+	name varchar(50) NOT NULL,
+	password varchar(50) NOT NULL
 );
 
-CREATE TABLE Asiakas(
+CREATE TABLE Customer(
 	id SERIAL PRIMARY KEY,
-	nimi varchar(50) NOT NULL,
-	osoite varchar(100),
-	kaupunki varchar(50),
-	postinumero INTEGER
+	name varchar(50) NOT NULL,
+	address varchar(100),
+	city varchar(50),
+	postnumber INTEGER
 );
 
-CREATE TABLE Tyontekija(
+CREATE TABLE Employee(
 	id SERIAL PRIMARY KEY,
-	nimi varchar(50) NOT NULL
+	name varchar(50) NOT NULL
 );
 
-CREATE TABLE Asiakaskaynti(
+CREATE TABLE Customervisit(
 	id SERIAL PRIMARY KEY,
-	asiakas_id INTEGER REFERENCES Asiakas(id),
-	tyontekija_id INTEGER REFERENCES Tyontekija(id),
-	paivamaara DATE,
-	alkamisaika TIME,
-	paattymisaika TIME
+	customer_id INTEGER REFERENCES Asiakas(id),
+	employee_id INTEGER REFERENCES Tyontekija(id),
+	start_date DATE,
+	end_date DATE,
+	start_time TIME,
+	end_time TIME
 );

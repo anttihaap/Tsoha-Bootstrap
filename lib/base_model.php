@@ -20,10 +20,20 @@
       $errors = array();
 
       foreach($this->validators as $validator){
+        $validator_errors = $this->{$validator}();
+        $errors = array_merge($errors,$validator_errors);
         // Kutsu validointimetodia tässä ja lisää sen palauttamat virheet errors-taulukkoon
       }
 
       return $errors;
+    }
+
+    public function validate_name_length($string, $min_length, $max_length) {
+      $errors = array();
+      if (!(strlen($string) > $min_length && strlen($string) < $max_length)) {
+        $errors[] = 'Nimi on virheellinen!';
+        }
+        return $errors;
     }
 
   }

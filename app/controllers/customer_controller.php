@@ -17,21 +17,18 @@ class CustomerController extends BaseController{
   }
 
   public static function store() {
-          // POST-pyynnön muuttujat sijaitsevat $_POST nimisessä assosiaatiolistassa
+    // POST-pyynnön muuttujat sijaitsevat $_POST nimisessä assosiaatiolistassa
     $params = $_POST;
     // Alustetaan uusi Game-luokan olion käyttäjän syöttämillä arvoilla
     $asiakas = new Asiakas(array(
-      'nimi' => $params['osoite'],
+      'nimi' => $params['nimi'],
       'osoite' => $params['osoite'],
       'kaupunki' => $params['kaupunki'],
       'postinumero' => $params['postinumero']
       ));
 
     // Kutsutaan alustamamme olion save metodia, joka tallentaa olion tietokantaan
-    $asiakas->save();
-
-    // Ohjataan käyttäjä lisäyksen jälkeen pelin esittelysivulle
-    Redirect::to('{{base_path}}/customer/edit/' . $asiakas->id);
-
+      $asiakas->save();
+      Redirect::to('/customer/edit/' . $asiakas->id);
   }
-}
+} 
