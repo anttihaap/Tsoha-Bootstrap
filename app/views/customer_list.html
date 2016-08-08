@@ -17,7 +17,7 @@
   <tbody>
     {% for asiakas in asiakkaat %}
     <tr>
-      <td><a href="#">{{asiakas.nimi}}</a></td>
+      <td><a href="{{base_path}}/customer/view/{{asiakas.id}}">{{asiakas.nimi}}</a></td>
       <th><a class="btn btn-default btn-sm" href="{{base_path}}/customer/edit/{{asiakas.id}}">Muokkaa tietoja</a></th>
     </tr> 
     {% endfor %}

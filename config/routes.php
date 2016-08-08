@@ -25,6 +25,10 @@
     CustomerController::customer_add();
   });
 
+  $routes->get('/customer/view/:id', function($id) {
+    CustomerController::customer_view($id);
+  });
+
   $routes->get('/customer/edit/:id', function($id) {
     CustomerController::customer_edit($id);
   });

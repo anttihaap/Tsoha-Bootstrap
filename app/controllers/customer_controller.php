@@ -7,6 +7,11 @@ class CustomerController extends BaseController{
     View::make('customer_list.html',array('asiakkaat' => $asiakkaat));
   }
 
+  public static function customer_view($id) {
+    $asiakas = Asiakas::find($id);
+    View::make('customer_view.html',array('asiakas' => $asiakas));
+  }
+
   public static function customer_edit($id) {
     $asiakas = Asiakas::find($id);
     View::make('customer_edit.html',array('asiakas' => $asiakas));

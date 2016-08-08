@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{asiakas.nimi}}</h1>
+<p>
+  <a href="{{base_path}}/customer/edit/{{asiakas.id}}" class="btn btn-default">Muokkaa tietoja</a>
+  <a href="#" class="btn btn-default">Asiakaskäynnit</a>
+</p>
+<p>
+  <div class="panel panel-default">
+    <div class="panel-heading">Osoite</div>
+    <div class="panel-body">{{asiakas.osoite}}, {{asiakas.kaupunki}} {{asiakas.postinumero}}</div>
+  </div>
+</p>
+
+<p>
+  <button class="btn btn-danger">Poista asiakas</button>
+</p>
+{% endblock %}
