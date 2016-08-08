@@ -15,20 +15,20 @@ Järjestelmä toteutetaan php:lla ja tietokanta toimii PostgreSQL:llä. Toiminta
 
 ![](pictures/käyttötapauskaavio.png)
 
-* Asiakkaan lisääminen - työntekijä/johto
-* Asiakkaan tietojen muokkaaminen - työntekijä/johto
-* Asiakkaan tarkastelu - työntekijä/johto
-* Asiakaskäynnin lisääminen - työntekijä/johto
-* Asiakaskäynnin muokkaaminen - työntekijä/johto
-* Asiakaskäynnin tarkastelu - työntekijä/johto
-* Asiakaskäyntien haku - työntekijä/johto
+* Asiakkaan lisääminen - työntekijä/hallinto
+* Asiakkaan tietojen muokkaaminen - työntekijä/hallinto
+* Asiakkaan tarkastelu - työntekijä/hallinto
+* Asiakaskäynnin lisääminen - työntekijä/hallinto
+* Asiakaskäynnin muokkaaminen - työntekijä/hallinto
+* Asiakaskäynnin tarkastelu - työntekijä/hallinto
+* Asiakaskäyntien haku - työntekijä/hallinto
  * Tietoja voidaan hakea asiakkaan ja ajanjakson perusteella.
 
 (toteutetaan jos kerkiää: )
 
-* Työntekijän lisääminen - johto
-* Työntekijän käyttäjätunnuksen tietojen muokkaaminen - johto
-* Työntekijän poistaminen - johto
+* Työntekijän lisääminen - hallinto
+* Työntekijän käyttäjätunnuksen tietojen muokkaaminen - hallinto
+* Työntekijän poistaminen - hallinto
 
 ## Järjestelmän tietosisältö
 
