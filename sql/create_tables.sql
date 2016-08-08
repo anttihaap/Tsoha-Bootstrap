@@ -1,4 +1,4 @@
-CREATE TABLE User(
+CREATE TABLE Account(
 	id SERIAL PRIMARY KEY,
 	name varchar(50) NOT NULL,
 	password varchar(50) NOT NULL
@@ -15,13 +15,13 @@ CREATE TABLE Customer(
 CREATE TABLE Employee(
 	id SERIAL PRIMARY KEY,
 	name varchar(50) NOT NULL,
-   user_id INTEGER REFERENCES User(id)
+   account_id INTEGER REFERENCES Account(id)
 );
 
 CREATE TABLE Manager(
    id SERIAL PRIMARY KEY,
    name varchar(50) NOT NULL,
-   user_id INTEGER REFERENCES User(id)
+   account_id INTEGER REFERENCES Useraccount(id)
 );
 
 CREATE TABLE Customervisit(
