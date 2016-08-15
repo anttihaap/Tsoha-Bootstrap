@@ -18,7 +18,7 @@ Tarkoituksena on helpottaa yrityksen kirjanpitoa työntekijöiden asiakaskäynne
 
 * [Asiakkaan katselu](http://antthaap.users.cs.helsinki.fi/tsoha/customer/view/1) (toimii id:llä, napeista vain muokkaa toimii)
 * [Asiakaslistaus](http://antthaap.users.cs.helsinki.fi/tsoha/customers) (toimii)
-* [Asiakkaan editointi](http://antthaap.users.cs.helsinki.fi/tsoha/customer/edit/1) (toimii id:llä)
+* [Asiakkaan editointi](http://antthaap.users.cs.helsinki.fi/tsoha/customer/edit/1) (toimii id:llä, muokkaus ei vielä toimi)
 * [Asiakkaan lisäys](http://antthaap.users.cs.helsinki.fi/tsoha/customer/add) (toimii)
 
 * [Asiakaskäynnit](http://antthaap.users.cs.helsinki.fi/tsoha/customervisits) (ei toimi)
