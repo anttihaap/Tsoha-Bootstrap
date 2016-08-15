@@ -14,11 +14,9 @@ Tarkoituksena on helpottaa yrityksen kirjanpitoa työntekijöiden asiakaskäynne
 
 [Lue lisää](doc/doc_markdown/dokumentaatio.md)
 
-## Viikko 2 - suunnitellut sivut:
+## Valmiit sivut:
 
-Huom. oli paljon aikaa, niin osa jo toimii.
-
-* [Asiakkaan katselu](http://antthaap.users.cs.helsinki.fi/tsoha/customer/view/1) (toimii id:llä, osa napeista ei toimi)
+* [Asiakkaan katselu](http://antthaap.users.cs.helsinki.fi/tsoha/customer/view/1) (toimii id:llä, napeista vain muokkaa toimii)
 * [Asiakaslistaus](http://antthaap.users.cs.helsinki.fi/tsoha/customers) (toimii)
 * [Asiakkaan editointi](http://antthaap.users.cs.helsinki.fi/tsoha/customer/edit/1) (toimii id:llä)
 * [Asiakkaan lisäys](http://antthaap.users.cs.helsinki.fi/tsoha/customer/add) (toimii)
