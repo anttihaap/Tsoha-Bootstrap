@@ -15,19 +15,19 @@ CREATE TABLE Customer(
 CREATE TABLE Employee(
 	id SERIAL PRIMARY KEY,
 	name varchar(50) NOT NULL,
-   account_id INTEGER REFERENCES Account(id)
+	account_id INTEGER REFERENCES Account(id)
 );
 
 CREATE TABLE Manager(
-   id SERIAL PRIMARY KEY,
-   name varchar(50) NOT NULL,
-   account_id INTEGER REFERENCES Useraccount(id)
+	id SERIAL PRIMARY KEY,
+	name varchar(50) NOT NULL,
+	account_id INTEGER REFERENCES Useraccount(id)
 );
 
 CREATE TABLE Customervisit(
 	id SERIAL PRIMARY KEY,
-	customer_id INTEGER REFERENCES Asiakas(id),
-	employee_id INTEGER REFERENCES Tyontekija(id),
+	customer_id INTEGER REFERENCES Customer(id),
+	employee_id INTEGER REFERENCES Employee(id),
 	start_date DATE NOT NULL,
 	end_date DATE NOT NULL,
 	start_time TIME NOT NULL,

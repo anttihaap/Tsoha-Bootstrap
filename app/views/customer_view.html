@@ -1,18 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>{{asiakas.nimi}}</h1>
+<h1>{{customer.nimi}}</h1>
+{% if message %}
+<div class="alert alert-success">
+	{{message}}
+</div>
+{% endif %}
 <p>
-  <a href="{{base_path}}/customer/edit/{{asiakas.id}}" class="btn btn-default">Muokkaa tietoja</a>
-  <a href="#" class="btn btn-default">Asiakaskäynnit</a>
+	<a href="{{base_path}}/customer/edit/{{customer.id}}" class="btn btn-default">Muokkaa tietoja</a>
+	<a href="#" class="btn btn-default">Asiakaskäynnit</a>
 </p>
 <p>
-  <div class="panel panel-default">
-    <div class="panel-heading">Osoite</div>
-    <div class="panel-body">{{asiakas.osoite}}, {{asiakas.kaupunki}} {{asiakas.postinumero}}</div>
-  </div>
+	<div class="panel panel-default">
+		<div class="panel-heading">Osoite</div>
+		<div class="panel-body">{{customer.address}}, {{customer.city}} {{customer.postnumber}}</div>
+	</div>
 </p>
-
 <p>
-  <button class="btn btn-danger">Poista asiakas</button>
+	<button class="btn btn-danger">Poista asiakas</button>
 </p>
 {% endblock %}

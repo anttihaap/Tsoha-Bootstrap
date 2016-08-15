@@ -15,10 +15,10 @@
   </thead>
 
   <tbody>
-    {% for asiakas in asiakkaat %}
+    {% for customer in customers %}
     <tr>
-      <td><a href="{{base_path}}/customer/view/{{asiakas.id}}">{{asiakas.nimi}}</a></td>
-      <th><a class="btn btn-default btn-sm" href="{{base_path}}/customer/edit/{{asiakas.id}}">Muokkaa tietoja</a></th>
+      <td><a href="{{base_path}}/customer/view/{{customer.id}}">{{customer.name}}</a></td>
+      <th><a class="btn btn-default btn-sm" href="{{base_path}}/customer/edit/{{customer.id}}">Muokkaa tietoja</a></th>
     </tr> 
     {% endfor %}
 

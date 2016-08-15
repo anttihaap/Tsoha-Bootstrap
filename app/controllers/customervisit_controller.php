@@ -1,5 +1,6 @@
 <?php
-  require 'app/models/asiakas.php';
+  require 'app/models/customer.php';
+  require 'app/models/employee.php';
   class CustomervisitController extends BaseController{
 
     public static function customervisits() {
@@ -7,7 +8,8 @@
     }
 
     public static function create_customervisit() {
-      $asiakkaat = Asiakas::all();
-      View::make('create_customervisit.html',array('asiakkaat' => $asiakkaat));
+      $customers = Customer::all();
+      $employees = Employee::all();
+      View::make('create_customervisit.html',array('customers' => $customers, 'employees' => $employees));
     }
   }

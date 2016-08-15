@@ -78,9 +78,8 @@ Järjestelmä toteutetaan php:lla ja tietokanta toimii PostgreSQL:llä. Toiminta
 
 ![](pictures/relaatiotietokantakaavio.png)
 
-**HUOM. Kaavosta User muutettu Account, koska avainsana. Tätä en ehtinyt korjata ennen DL!
 **HUOM2. tietokantakaavio on englanniksi, koska ohjelman koodi on englanniksi.**
 
-Kaaviosta huomataan, että käyttäjätunnus (User) voi liittyä moneen työntekijään tai hallinto-käyttäjään. Mikään ei estä tätä. Pitää selvittää yhden suhde yhteen -liitosta lisää. Varmaan rajoitteella onnistuu.
+Kaaviosta huomataan, että käyttäjätunnus (Account) voi liittyä moneen työntekijään tai hallinto-käyttäjään. Mikään ei estä tätä. Pitää selvittää yhden suhde yhteen -liitosta lisää. Varmaan rajoitteella onnistuu.
 
 Henkilötieto taulun, joka sisältää nimen, osoitteen jne., voisi luoda. Sitä pystyisi käyttämään Asiakas (Customer), Työntekijä (Employee) ja Hallinto (Manager) taulut. En ehtinyt toteuttamaan vielä.
