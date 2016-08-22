@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Asiakaskäynti</h1>
+{% if message %}
+<div class="alert alert-success">
+	{{message}}
+</div>
+{% endif %}
+<p>
+	<a href="" class="btn btn-default">Muokkaa tietoja</a>
+</p>
+<p>
+	<div class="panel panel-default">
+		<div class="panel-heading">Asiakas</div>
+		<div class="panel-body">{{customervisit.customer_name}}</div>
+	</div>
+</p>
+<p>
+	<div class="panel panel-default">
+		<div class="panel-heading">Työntekijä</div>
+		<div class="panel-body">{{customervisit.employee_first_name}} {{customervisit.employee_last_name}}</div>
+	</div>
+</p>
+<p>
+	<div class="panel panel-default">
+		<div class="panel-heading">Käynnin alkamisaika</div>
+		<div class="panel-body">{{customervisit.start_date}} {{customervisit.start_time}}</div>
+	</div>
+</p>
+<p>
+	<div class="panel panel-default">
+		<div class="panel-heading">Käynnin loppumisaika</div>
+		<div class="panel-body">{{customervisit.end_date}} {{customervisit.end_time}}</div>
+	</div>
+</p>
+
+<p>
+	<div class="panel panel-default">
+		<div class="panel-heading">Kuvaus</div>
+		<div class="panel-body">{{customervisit.description}}</div>
+	</div>
+</p>
+<p>
+	<form method="post" action="" style="display: inline-block;">
+		<button type="submit" class="btn btn-danger">Poista asiakaskäynti</button>
+	</form>
+</p>
+{% endblock %}

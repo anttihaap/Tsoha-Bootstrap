@@ -3,6 +3,11 @@
 Yleisiä linkkejä:
 
 * [Testaus alusta (users.cs)](http://antthaap.users.cs.helsinki.fi/tsoha/)
+
+**Käyttäjätunnus: Testi** ja **salasana: salasana**
+
+Kirjaudut järjestelmään työntekijänä, jolloin voit lisätä vain omia asiakaskäyntejä.
+
 * [Dokumentaatio](doc/doc_markdown/dokumentaatio.md)
 Pdf-versio dokumentaatiosta: [pdf](doc/dokumentaatio.pdf)
 
@@ -16,10 +21,12 @@ Tarkoituksena on helpottaa yrityksen kirjanpitoa työntekijöiden asiakaskäynne
 
 ## Valmiit sivut:
 
-* [Asiakkaan katselu](http://antthaap.users.cs.helsinki.fi/tsoha/customer/view/1) (toimii id:llä, napeista vain muokkaa toimii)
+#### Asiakas
+* [Asiakkaan katselu/poisto](http://antthaap.users.cs.helsinki.fi/tsoha/customer/view/1) (toimii id:llä. muokkaus ja poisto toimii)
 * [Asiakaslistaus](http://antthaap.users.cs.helsinki.fi/tsoha/customers) (toimii)
-* [Asiakkaan editointi](http://antthaap.users.cs.helsinki.fi/tsoha/customer/edit/1) (toimii id:llä, muokkaus ei vielä toimi)
+* [Asiakkaan editointi](http://antthaap.users.cs.helsinki.fi/tsoha/customer/edit/1) (toimii)
 * [Asiakkaan lisäys](http://antthaap.users.cs.helsinki.fi/tsoha/customer/add) (toimii)
 
-* [Asiakaskäynnit](http://antthaap.users.cs.helsinki.fi/tsoha/customervisits) (ei toimi)
-* [Asiakaskäynnin lisäys](http://antthaap.users.cs.helsinki.fi/tsoha/customervisit/new) (ei toimi)
+#### Asiakaskäynti
+* [Asiakaskäynnit](http://antthaap.users.cs.helsinki.fi/tsoha/customervisits) (toimii. luonto, haku ja listaus napit toimii)
+* [Asiakaskäynnin lisäys](http://antthaap.users.cs.helsinki.fi/tsoha/customervisit/new) (toimii. huom! työntekijä voi kirjautumisen perusteella listätä **vain omia** asiaakskänytejä)

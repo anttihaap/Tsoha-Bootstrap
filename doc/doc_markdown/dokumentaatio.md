@@ -83,3 +83,21 @@ Järjestelmä toteutetaan php:lla ja tietokanta toimii PostgreSQL:llä. Toiminta
 Kaaviosta huomataan, että käyttäjätunnus (Account) voi liittyä moneen työntekijään tai hallinto-käyttäjään. Mikään ei estä tätä. Pitää selvittää yhden suhde yhteen -liitosta lisää. Varmaan rajoitteella onnistuu.
 
 Henkilötieto taulun, joka sisältää nimen, osoitteen jne., voisi luoda. Sitä pystyisi käyttämään Asiakas (Customer), Työntekijä (Employee) ja Hallinto (Manager) taulut. En ehtinyt toteuttamaan vielä.
+
+## Käynnistys-/käyttöohje
+
+Testialusta: [http://antthaap.users.cs.helsinki.fi/tsoha/](http://antthaap.users.cs.helsinki.fi/tsoha/)
+
+***Käyttjätunnus: Testi, salasana: salasana***
+
+Kirjaudut työntekijänä ja voit:
+
+* Voit muokata/lisätä/poistaa asiakkaita.
+* Lisätä ***vain omia*** asiakaskäyntejä.
+* Tarkastella asiakaskäyntejä. Muokkaus/poisto kesken.
+
+Muista laittaa päivämäärät muodossa dd.mm.yyyy ja ajat muodossa hh:mm .
+
+### Ohjeet:
+
+Paina linkkiä. Käytä hiirtä ja näppäimistöä käyttääksesi sivustoa. Sivut ovat itsestäänsselvät...

@@ -14,7 +14,8 @@ CREATE TABLE Customer(
 
 CREATE TABLE Employee(
 	id SERIAL PRIMARY KEY,
-	name varchar(50) NOT NULL,
+	first_name varchar(50) NOT NULL,
+	last_name varchar(50) NOT NULL,
 	account_id INTEGER REFERENCES Account(id)
 );
 
@@ -29,7 +30,8 @@ CREATE TABLE Customervisit(
 	customer_id INTEGER REFERENCES Customer(id),
 	employee_id INTEGER REFERENCES Employee(id),
 	start_date DATE NOT NULL,
-	end_date DATE NOT NULL,
 	start_time TIME NOT NULL,
-	end_time TIME NOT NULL
+	end_date DATE NOT NULL,
+	end_time TIME NOT NULL,
+	description varchar(500)
 );

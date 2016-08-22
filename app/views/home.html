@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class="page-header">
-    <h1>Insert Name</h1>
-    <p>Insert Some introduction text.</p>
-  </div>
+<div class="page-header">
+	{% if message %}
+	<div class="alert alert-success">{{message}}</div>
+	{% endif %}
+	<h1>Insert Name</h1>
+	<p>Insert Some introduction text.</p>
+</div>
 {% endblock %}

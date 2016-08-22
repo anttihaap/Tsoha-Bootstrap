@@ -17,6 +17,8 @@
 	</div>
 </p>
 <p>
-	<button class="btn btn-danger">Poista asiakas</button>
+	<form method="post" action="{{base_path}}/customer/destroy/{{customer.id}}" style="display: inline-block;">
+		<button type="submit" class="btn btn-danger">Poista asiakas</button>
+	</form>
 </p>
 {% endblock %}

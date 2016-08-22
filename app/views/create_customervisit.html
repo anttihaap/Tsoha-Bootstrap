@@ -1,59 +1,49 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Luo asiakaskäynti</h1>
-<form>
-  <div class="form-group">
-    <label for="customer">Asiakas</label>
-    <select class="form-control" id="sel1">
-      {% for customer in customers %}
-      <option>{{customer.name}}</option>
-      {% endfor %}
-    </select>
-  </div>
+{% if errors %}
+<div class="alert alert-danger">
+  <ul>
+    {% for error in errors %}
+    <li>{{error}}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+<p>Huom: työntekijät voivat vain kirjata omia asiakaskäyntejään</p>
+<p>Päivämäärät muodossa dd.mm.yyyy ja ajat muodossa hh:mm.</p>
+<form method="post" action="{{base_path}}/customervisit">
   <div class="form-group">
     <label for="employee">Työntekijä</label>
-    <select class="form-control" id="sel1">
-      {% for employee in employees %}
-      <option>{{employee.name}}</option>
+    <p class="form-control-static">{{employee.first_name}} {{employee.last_name}}</p>
+  </div>
+  <div class="form-group">
+    <label for="customer">Asiakas</label>
+    <select class="form-control" name="customer_id">
+      {% for customer in customers %}
+      <option value="{{customer.id}}">{{customer.name}}</option>
       {% endfor %}
     </select>
   </div>
-
-  <div class="container">
-    <div class="row">
-      <div class='col-sm-6'>
-        <div class="form-group">
-          <div class='input-group date' id='datetimepicker1'>
-            <input type='text' class="form-control" />
-            <span class="input-group-addon">
-              <span class="glyphicon glyphicon-calendar"></span>
-            </span>
-          </div>
-        </div>
-      </div>
-      <script type="text/javascript">
-        $(function () {
-          $('#datetimepicker1').datetimepicker();
-        });
-      </script>
-    </div>
-  </div>
-
   <div class="form-group">
-    <label>Päivämäärä</label>
-    <input type="text" class="form-control" value="">
+    <label>Käynnin alkamispäivämäärä</label>
+    <input type="text" name="start_date" class="form-control" value="{{attributes.start_date}}">
   </div>
   <div class="form-group">
     <label>Käynnin alkamisaika</label>
-    <input type="text" class="form-control" value="">
+    <input type="text" name="start_time" class="form-control" value="{{attributes.start_time}}">
+  </div>
+  <div class="form-group">
+    <label>Käynnin loppumispäivämäärä</label>
+    <input type="text" name="end_date" class="form-control" value="{{attributes.end_date}}">
   </div>
   <div class="form-group">
     <label>Käynnin loppumisaika</label>
-    <input type="text" class="form-control" value="">
+    <input type="text" name="end_time" class="form-control" value="{{attributes.end_time}}">
   </div>
   <div class="form-group">
     <label for="kuvaus">Kuvaus</label>
-    <textarea class="form-control" rows="7" id="comment"></textarea>
+    <textarea type="text" class="form-control" name="description" rows="7" id="comment">{{attributes.description}}</textarea>
   </div>
   <div class="form-group">
     <button type="submit" class="btn btn-primary">Luo</button>

@@ -3,8 +3,43 @@
 <h1>Asiakaskäynnit</h1>
 
 <p>
-  <a href="{{base_path}}/customervisit/new" class="btn btn-success">Luo asiakaskäynti</a>
+	<a href="{{base_path}}/customervisit/new" class="btn btn-success">Luo asiakaskäynti</a>
+	<a href="{{base_path}}/customervisits/list" class="btn btn-default">Listaa asiakaskäynnit</a>
 </p>
 
-<h2>Tähän tulee haku</h2>
+<h2>Haku (ei vielä toimi, listaus ja luonti toimii.</h2>
+
+<form>
+  <div class="form-group">
+    <label for="customer">Asiakas</label>
+    <select class="form-control" id="sel1">
+      {% for customer in customers %}
+      <option>{{customer.name}}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="employee">Työntekijä</label>
+    <select class="form-control" id="sel1">
+      {% for employee in employees %}
+      <option>{{employee.first_name}} {{employee.last_name}}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Päivämäärä</label>
+    <input type="text" class="form-control" value="">
+  </div>
+  <div class="form-group">
+    <label>Käynnin alkamisaika</label>
+    <input type="text" class="form-control" value="">
+  </div>
+  <div class="form-group">
+    <label>Käynnin loppumisaika</label>
+    <input type="text" class="form-control" value="">
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Hae</button>
+  </div>
+</form>
 {% endblock %}

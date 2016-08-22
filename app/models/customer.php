@@ -5,7 +5,7 @@ class Customer extends BaseModel {
 
   public function __construct($attributes) {
     parent::__construct($attributes);
-    $this->validators = array('validate_name');
+    $this->validators = array('validate_name', 'validate_postnumber');
   }
 
   public static function all() {
@@ -53,6 +53,16 @@ class Customer extends BaseModel {
     $this->id = $row['id'];
   }
 
+  public function update() {
+    $query = DB::connection()->prepare('UPDATE Customer SET name=:name, address=:address, city=:city, postnumber=:postnumber WHERE id = :id');
+    $query->execute(array('id' => $this->id, 'name' => $this->name, 'city' => $this->city, 'address' => $this->address, 'postnumber' => intval($this->postnumber)));
+  }
+
+  public function destroy() {
+    $query = DB::connection()->prepare('DELETE FROM Customer WHERE id=:id');
+    $query->execute(array('id' => $this->id));
+  }
+
   public function validate_name() {
     $errors = array();
     if ($this->name == '' || $this->name == null) {
@@ -60,6 +70,18 @@ class Customer extends BaseModel {
     }
     if (strlen($this->name) < 4) {
       $errors[] = 'Nimen pituuden tulee olla vähintään 4 merkkiä!';
+    }
+    return $errors;
+  }
+
+  public function validate_postnumber() {
+    $errors = array();
+    //postnumber can be empty
+    if ($this->postnumber == '') {
+      return $errors;
+    }
+    if (!is_int(intval($this->postnumber)) || intval($this->postnumber) >= 9999 || intval($this->postnumber) < 0) {
+      $errors[] = 'Postinumeron tulee olla väliltä 0000-9999 tai tyhjä.';
     }
     return $errors;
   }
