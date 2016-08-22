@@ -80,7 +80,7 @@ class Customer extends BaseModel {
     if ($this->postnumber == '') {
       return $errors;
     }
-    if (!is_int(intval($this->postnumber)) || intval($this->postnumber) >= 9999 || intval($this->postnumber) < 0) {
+    if (is_string($this->postnumber) || !is_int(intval($this->postnumber)) || intval($this->postnumber) >= 9999 || intval($this->postnumber) < 0) {
       $errors[] = 'Postinumeron tulee olla väliltä 0000-9999 tai tyhjä.';
     }
     return $errors;
