@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Asiakaskäynnit</h1>
+<p>Työntekijä voi muokata vain omia asiaskaskäyntejään.</p>
 
 {% if message %}
 <div class="alert alert-success">
@@ -28,7 +29,11 @@
       <td>{{visit.start_date}} {{visit.start_time}}</td>
       <td>{{visit.end_time}} {{visit.start_time}}</td>
       <th><a class="btn btn-default btn-sm" href="{{base_path}}/customervisit/{{visit.id}}">Katso</a></th>
+      {% if visit.employee_id == employee_logged_in.id %}
       <th><a class="btn btn-default btn-sm" href="">Muokkaa tietoja</a></th>
+      {% else %}
+      <th></th>
+      {% endif %}
     </tr> 
     {% endfor %}
 

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Luo asiakaskäynti</h1>
+
 {% if errors %}
 <div class="alert alert-danger">
   <ul>
@@ -10,8 +11,10 @@
   </ul>
 </div>
 {% endif %}
+
 <p>Huom: työntekijät voivat vain kirjata omia asiakaskäyntejään</p>
 <p>Päivämäärät muodossa dd.mm.yyyy ja ajat muodossa hh:mm.</p>
+
 <form method="post" action="{{base_path}}/customervisit">
   <div class="form-group">
     <label for="employee">Työntekijä</label>

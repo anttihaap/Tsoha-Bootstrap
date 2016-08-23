@@ -1,6 +1,6 @@
 <?php
 
-function check_logged_in(){
+function check_logged_in() {
   BaseController::check_logged_in();
 }
 
@@ -27,15 +27,15 @@ $routes->get('/customers', 'check_logged_in', function() {
   CustomerController::customer_list();
 });
 
-$routes->post('/customer', 'check_logged_in',  function() {
+$routes->post('/customer', 'check_logged_in', function() {
   CustomerController::store();
 });
 
-$routes->get('/customer/add', 'check_logged_in',  function() {
+$routes->get('/customer/add', 'check_logged_in', function() {
   CustomerController::add();
 });
 
-$routes->get('/customer/view/:id', 'check_logged_in',  function($id) {
+$routes->get('/customer/view/:id', 'check_logged_in', function($id) {
   CustomerController::customer_view($id);
 });
 

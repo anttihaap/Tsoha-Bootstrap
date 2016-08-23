@@ -8,7 +8,7 @@ class CustomervisitController extends BaseController{
 
   public static function customervisits_list() {
     $customervisits = Customervisit::all();
-    View::make('customervisits/customervisit_list.html', array('customervisits' => $customervisits));
+    View::make('customervisits/customervisit_list.html', array('customervisits' => $customervisits, 'employee_logged_in' => self::get_employee_logged_in()));
   }
 
   public static function view($id) {

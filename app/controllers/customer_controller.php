@@ -37,7 +37,7 @@ class CustomerController extends BaseController{
 
     if (count($errors) == 0) {
       $customer->save();
-      Redirect::to('/customer/view/' . $customer->id ,array('message' => 'Asiakas lisätty!'));
+      Redirect::to('/customer/view/' . $customer->id , array('message' => 'Asiakas lisätty!'));
     } else {
       View::make('customer_add.html',array('errors' => $errors, 'attributes' => $attributes));
     }
@@ -54,13 +54,12 @@ class CustomerController extends BaseController{
       'postnumber' => $params['postnumber']
       );
 
-    // Alustetaan Game-olio käyttäjän syöttämillä tiedoilla
     $customer = new Customer($attributes);
     $errors = $customer->errors();
 
-    if(count($errors) > 0){
+    if (count($errors) > 0) {
       View::make('customer_edit.html', array('errors' => $errors, 'customer' => $attributes));
-    }else{
+    } else {
       $customer->update();
       Redirect::to('/customer/view/' . $customer->id, array('message' => 'Asiakasta on muokattu onnistuneesti!'));
     }
