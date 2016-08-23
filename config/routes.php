@@ -22,6 +22,10 @@ $routes->post('/login', function() {
   UserController::handle_login();
 });
 
+$routes->post('/logout', function() {
+  UserController::logout();
+});
+
   //CUSTOMER
 $routes->get('/customers', 'check_logged_in', function() {
   CustomerController::customer_list();
