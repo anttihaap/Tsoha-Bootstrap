@@ -7,6 +7,8 @@ class HelloWorldController extends BaseController{
   }
 
   public static function sandbox() {
-    Kint::dump(DateTimeParser::time_to_sql_time("00:00"));
+    Kint::dump(intval("013"));
+    Kint::dump(intval("0"));
+    Kint::dump(intval("00"));
   }
 }

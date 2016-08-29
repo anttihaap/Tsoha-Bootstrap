@@ -42,6 +42,7 @@ Järjestelmä toteutetaan php:lla ja tietokanta toimii PostgreSQL:llä. Toiminta
 |Attribuutti | Arvojoukko           | Kuvailu                             |
 |------------|----------------------|-------------------------------------|
 |Nimi        | Merkkijono, max 50   | Asiakkaan koko nimi                 |
+|Aktiivinen  | Totuusarvo           | Kuvaa onko asiakas aktiivinen (tai "käytössä oleva"). Jos on voidaan: listätä asiakaskäynti, näkyy asiakaslistauksessa (epäaktiivisille oma listaus).
 |Osoite      | Merkkijono, max 120  | Osoite, esim: Mannerheimintie 1 A 1 |
 |Kaupunki    | Merkkijono, max 50   | Asiakkaan asuin kotikaupunki        |
 |Postinumero | Kokonaisluku         | Asiakkaan postinumero               |
@@ -88,16 +89,49 @@ Henkilötieto taulun, joka sisältää nimen, osoitteen jne., voisi luoda. Sitä
 
 Testialusta: [http://antthaap.users.cs.helsinki.fi/tsoha/](http://antthaap.users.cs.helsinki.fi/tsoha/)
 
-***Käyttjätunnus: Testi, salasana: salasana***
+**Käyttjätunnus: Testi, salasana: salasana**
 
 Kirjaudut työntekijänä ja voit:
 
 * Voit muokata/lisätä/poistaa asiakkaita.
-* Lisätä ***vain omia*** asiakaskäyntejä.
+* Lisätä **vain omia** asiakaskäyntejä.
 * Tarkastella asiakaskäyntejä. Muokkaus/poisto kesken.
 
 Muista laittaa päivämäärät muodossa dd.mm.yyyy ja ajat muodossa hh:mm .
 
-### Ohjeet:
+**Ohjeet:**
 
 Paina linkkiä. Käytä hiirtä ja näppäimistöä käyttääksesi sivustoa. Sivut ovat itsestäänsselvät...
+
+## Järjestelmän yleisrakenne
+
+Tietokantasovellusta tehdessä on noudatettu MVC-mallia. Kontrollerit, näkymät ja mallit
+sijaitsevat hakemistoissa controllers, views- ja models. Käytetyt apukirjastot on sijoitettu
+hakemistoon lib ja asetukset ovat tiedostossa settings.php.
+
+Näkymät on jaettu näkymät-kansiossa mallien perusteella kansoihin.
+
+* Asiakas (customer)
+* Asiakaskäynti (customervisit)
+* Työntekijä (employee)
+* Käyttäjä (user) - järjestelmän käyttäjään liittyvät näkymät (mm. kirjautumissivusto)
+
+Kontrollerit on jaettu mallien perusteella:
+
+* Asiakaskontrolleri (customer_controller.php)
+* Asiakaskäyntikontrolleri (customer_visitcontroller.php)
+* Käyttäjäkontrolleri (user_controller.php)
+
+#### Istunto
+
+Järjestelmän käytäjällä on käyttäjätunnus, joka on liitetty tietokannassa joko työntekijä tai hallinnonjäsen taulukkoon. (Huom: hallinnonjäsen toiminnot tekemättä, mutta hyvä laajennuksen kohde jos ei valmistu)
+
+Asiakaskäynnin luomisen yhdeydessä valitaan istunnon (sessions) perusteella asiakaskäyntiin oikea työntekijä, eli kirjautumisen perusteella työntekijä. Hallinnon jäsen voi vapaasti luoda asiakaskäyntejä. Työntekijät voivat myös muokata vain omia asiakaskäyntejään (toteuttamatta).
+
+#### Asetukset
+
+Tiedotossa config/enviroment.sh määritetään serveripään käyttäjätunnus. config/database.php luo tietokantayhteyden käyttäen konffattua käyttäjätunnusta.
+
+## Käyttöliittymä ja järjestelmän komponentit
+
+![](pictures/komponentit.png)

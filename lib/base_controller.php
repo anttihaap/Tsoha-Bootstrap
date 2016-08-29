@@ -29,4 +29,8 @@ class BaseController{
     return null;
   }
 
+  public static function user_is_manager() {
+    
+  }
+
 }

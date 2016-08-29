@@ -1,11 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>{{customer.nimi}}</h1>
+<h1>{{customer.name}}</h1>
+
 {% if message %}
 <div class="alert alert-success">
 	{{message}}
 </div>
 {% endif %}
+
+{% if errors %}
+<div class="alert alert-danger">
+	<ul>
+		{% for error in errors %}
+		<li>{{error}}</li>
+		{% endfor %}
+	</ul>
+</div>
+{% endif %}
+
 <p>
 	<a href="{{base_path}}/customer/edit/{{customer.id}}" class="btn btn-default">Muokkaa tietoja</a>
 	<a href="#" class="btn btn-default">Asiakaskäynnit</a>
@@ -20,5 +32,13 @@
 	<form method="post" action="{{base_path}}/customer/destroy/{{customer.id}}" style="display: inline-block;">
 		<button type="submit" class="btn btn-danger">Poista asiakas</button>
 	</form>
-</p>
-{% endblock %}
+	{% if customer.active %}
+	<form method="post" action="{{base_path}}/customer/inactivate/{{customer.id}}" style="display: inline-block;">
+		<button type="submit" class="btn btn-default">Epäaktivoi</button>
+	</form>
+	{% else %}
+	<form method="post" action="{{base_path}}/customer/activate/{{customer.id}}" style="display: inline-block;">
+		<button type="submit" class="btn btn-default">Aktivoi</button>
+		{% endif %}
+	</p>
+	{% endblock %}

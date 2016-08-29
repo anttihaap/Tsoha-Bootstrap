@@ -1,22 +1,28 @@
 <?php
 require 'lib/string_validator.php';
 class Customer extends BaseModel {
-  public $id, $name, $address, $city, $postnumber;
+  public $id, $active, $name, $address, $city, $postnumber;
 
   public function __construct($attributes) {
     parent::__construct($attributes);
     $this->validators = array('validate_name', 'validate_postnumber');
   }
 
-  public static function all() {
-    $query = DB::connection()->prepare('SELECT * FROM Customer ORDER BY name');
-    $query->execute();
+  public static function all($options) {
+    $query_string = 'SELECT * FROM Customer';
+    if (isset($options['active'])) {
+      $query_string .= ' WHERE active = :active';
+    }
+    $query_string .= ' ORDER BY name';
+    $query = DB::connection()->prepare($query_string);
+    $query->execute($options);
     $rows = $query->fetchAll();
 
     $asiakkaat = array();
     foreach ($rows as $row) {
       $asiakkaat[] = new self(array(
         'id' => $row['id'],
+        'active' => $row['active'],
         'name' => $row['name'],
         'address' => $row['address'],
         'city' => $row['city'],
@@ -34,6 +40,7 @@ class Customer extends BaseModel {
     if ($row) {
       $asiakas = new self(array(
         'id' => $row['id'],
+        'active' => $row['active'],
         'name' => $row['name'],
         'address' => $row['address'],
         'city' => $row['city'],
@@ -47,7 +54,7 @@ class Customer extends BaseModel {
   }
 
   public function save() {
-    $query = DB::connection()->prepare('INSERT INTO Customer (name, address, city, postnumber) VALUES (:name, :address, :city, :postnumber) RETURNING id');
+    $query = DB::connection()->prepare('INSERT INTO Customer (active, name, address, city, postnumber) VALUES (True, :name, :address, :city, :postnumber) RETURNING id');
     $query->execute(array('name' => $this->name, 'city' => $this->city, 'address' => $this->address, 'postnumber' => intval($this->postnumber)));
     $row = $query->fetch();
     $this->id = $row['id'];
@@ -55,12 +62,26 @@ class Customer extends BaseModel {
 
   public function update() {
     $query = DB::connection()->prepare('UPDATE Customer SET name=:name, address=:address, city=:city, postnumber=:postnumber WHERE id = :id');
-    $query->execute(array('id' => $this->id, 'name' => $this->name, 'city' => $this->city, 'address' => $this->address, 'postnumber' => intval($this->postnumber)));
+    $query->execute(array('id' => $this->id, 'active' => $this->active, 'name' => $this->name, 'city' => $this->city, 'address' => $this->address, 'postnumber' => intval($this->postnumber)));
   }
 
   public function destroy() {
     $query = DB::connection()->prepare('DELETE FROM Customer WHERE id=:id');
     $query->execute(array('id' => $this->id));
+  }
+
+  public function set_active($id, $bool_int) {
+    $query = DB::connection()->prepare('UPDATE Customer SET active=:bool_int WHERE id=:id');
+    $query->execute(array('id' => $id, 'bool_int' => $bool_int));
+  }
+
+  //Checks if customer is in customervisits. If it is, you cant delete.
+  public function can_destroy() {
+    $query = DB::connection()->prepare('SELECT * FROM Customervisit WHERE customer_id=:id LIMIT 1');
+    $query->execute(array('id' => $this->id));
+    $row = $query->fetch();
+    //There should be no customervisits for customer.
+    return $row == null;
   }
 
   public function validate_name() {
@@ -80,7 +101,7 @@ class Customer extends BaseModel {
     if ($this->postnumber == '') {
       return $errors;
     }
-    if (is_string($this->postnumber) || !is_int(intval($this->postnumber)) || intval($this->postnumber) >= 9999 || intval($this->postnumber) < 0) {
+    if (!ctype_digit($this->postnumber) || intval($this->postnumber) >= 9999 || intval($this->postnumber) < 0) {
       $errors[] = 'Postinumeron tulee olla väliltä 0000-9999 tai tyhjä.';
     }
     return $errors;

@@ -31,6 +31,10 @@ $routes->get('/customers', 'check_logged_in', function() {
   CustomerController::customer_list();
 });
 
+$routes->get('/customers/inactive', 'check_logged_in', function() {
+  CustomerController::customer_list_inactive();
+});
+
 $routes->post('/customer', 'check_logged_in', function() {
   CustomerController::store();
 });
@@ -55,6 +59,14 @@ $routes->post('/customer/destroy/:id', 'check_logged_in', function($id) {
   CustomerController::destroy($id);
 });
 
+$routes->post('/customer/activate/:id', 'check_logged_in', function($id) {
+  CustomerController::activate($id);
+});
+
+$routes->post('/customer/inactivate/:id', 'check_logged_in', function($id) {
+  CustomerController::inactivate($id);
+});
+
   //CUSTOMERVISITS
 $routes->get('/customervisits', 'check_logged_in', function() {
   CustomervisitController::customervisits();
@@ -74,4 +86,8 @@ $routes->post('/customervisit', 'check_logged_in', function() {
 
 $routes->get('/customervisit/:id', 'check_logged_in', function($id) {
   CustomervisitController::view($id);
+});
+
+$routes->post('/customervisit/search', 'check_logged_in', function() {
+  CustomervisitController::search();
 });

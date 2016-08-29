@@ -3,28 +3,34 @@ require 'app/models/customer.php';
 class CustomerController extends BaseController{
 
   public static function customer_list() {
-    $customers = Customer::all();      
-    View::make('customer_list.html',array('customers' => $customers));
+    $customers = Customer::all(array('active' => 1));      
+    View::make('customer/customer_list.html',array('customers' => $customers));
+  }
+
+  public static function customer_list_inactive() {
+    $customers = Customer::all(array('active' => 0));      
+    View::make('customer/customer_list_inactive.html',array('customers' => $customers));
   }
 
   public static function customer_view($id) {
     $customer = Customer::find($id);
-    View::make('customer_view.html',array('customer' => $customer));
+    View::make('customer/customer_view.html',array('customer' => $customer));
   }
 
   public static function customer_edit($id) {
     $customer = Customer::find($id);
-    View::make('customer_edit.html',array('customer' => $customer));
+    View::make('customer/customer_edit.html',array('customer' => $customer));
   }
 
   public static function add() {
-    View::make('customer_add.html');
+    View::make('customer/customer_add.html');
   }
 
   public static function store() {
     $params = $_POST;
 
     $attributes = array(
+      'active' => True,
       'name' => $params['name'],
       'address' => $params['address'],
       'city' => $params['city'],
@@ -39,7 +45,7 @@ class CustomerController extends BaseController{
       $customer->save();
       Redirect::to('/customer/view/' . $customer->id , array('message' => 'Asiakas lisätty!'));
     } else {
-      View::make('customer_add.html',array('errors' => $errors, 'attributes' => $attributes));
+      View::make('customer/customer_add.html',array('errors' => $errors, 'attributes' => $attributes));
     }
   }
 
@@ -58,7 +64,7 @@ class CustomerController extends BaseController{
     $errors = $customer->errors();
 
     if (count($errors) > 0) {
-      View::make('customer_edit.html', array('errors' => $errors, 'customer' => $attributes));
+      View::make('customer/customer_edit.html', array('errors' => $errors, 'customer' => $attributes));
     } else {
       $customer->update();
       Redirect::to('/customer/view/' . $customer->id, array('message' => 'Asiakasta on muokattu onnistuneesti!'));
@@ -67,7 +73,30 @@ class CustomerController extends BaseController{
 
   public static function destroy($id) {
     $customer = new Customer(array('id' => $id));
-    $customer->destroy();
-    Redirect::to('/customers', array('message' => 'Asiakas on poistettu onnistuneesti!'));
+    if ($customer->can_destroy()) {
+      Redirect::to('/customers', array('message' => 'Asiakas on poistettu onnistuneesti!'));
+    } else {
+      $errors[] = 'Et voi poistaa asiakasta, jolla on asiakaskäyntejä. Asiakkaan voi epäaktivoida.';
+      Redirect::to('/customer/view/' . $customer->id, array('errors' => $errors));
+    }
   }
+
+  public static function activate($id) {
+    if (Customer::find($id)) {
+      Customer::set_active($id,1);
+      Redirect::to('/customer/view/' . $id, array('message' => 'Asiakas on aktivoitu!'));
+    } else {
+      Redirect:to('/customer/view/' . $id, array('error' => 'Et aktivoida asiakasta, jota ei ole olemassa!'));
+    }
+  }
+
+  public static function inactivate($id) {
+    if (Customer::find($id)) {
+      Customer::set_active($id,0);
+      Redirect::to('/customer/view/' . $id, array('message' => 'Asiakas on epäaktivoitu!'));
+    } else {
+      Redirect:to('/customer/view/' . $id, array('error' => 'Et epäaktivoida asiakasta, jota ei ole olemassa!'));
+    }
+  }
+
 } 

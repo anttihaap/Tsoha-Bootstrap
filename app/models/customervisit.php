@@ -9,59 +9,70 @@ class Customervisit extends BaseModel {
 		$this->validators = array('validate_start_date', 'validate_start_time', 'validate_end_date', 'validate_end_time');
 	}
 
-	public static function all() {
-		$query = DB::connection()->prepare('SELECT Customervisit.id, Customervisit.customer_id, Customervisit.employee_id, Customervisit.start_date, Customervisit.start_time, Customervisit.end_date, Customervisit.end_time, Customervisit.description, Employee.last_name AS employee_last_name, Employee.first_name AS employee_first_name, Customer.name AS customer_name FROM Customervisit
-			INNER JOIN Customer
-			ON Customervisit.customer_id=Customer.id
-			INNER JOIN Employee 
-			ON Customervisit.employee_id=Employee.id');
-		$query->execute();
+	public static function all($options) {
+		$query_string = 'SELECT Customervisit.id, Customervisit.customer_id, Customervisit.employee_id, Customervisit.start_date, Customervisit.start_time, Customervisit.end_date, Customervisit.end_time, Customervisit.description, Employee.last_name AS employee_last_name, Employee.first_name AS employee_first_name, Customer.name AS customer_name FROM Customervisit
+		INNER JOIN Customer
+		ON Customervisit.customer_id=Customer.id
+		INNER JOIN Employee 
+		ON Customervisit.employee_id=Employee.id';
+
+		$where_options = array();
+		if (isset($options['customer_id'])) {
+			$where_options[] = 'customer_id = ' . $options['customer_id'];
+		}
+		if (isset($options['employee_id'])) {
+			$where_options[] = 'employee_id = ' . $options['employee_id'];
+		}
+
+		$query_string .= ' ORDER BY Customervisit.start_date, Customervisit.start_time';
+		$query = DB::connection()->prepare($query_string);
+		$query->execute($options);
 		$rows = $query->fetchAll();
 
 		$customer_visits = array();
 		foreach ($rows as $row) {
 			$customer_visits[] = new self(array(
-				'id' => $row['id'],
-				'customer_id' => $row['customer_id'],
-				'employee_id' => $row['employee_id'],
-				'start_date' => $row['start_date'],
-				'start_time' => $row['start_time'],
-				'end_date' => $row['end_date'],
-				'end_time' => $row['end_time'],
-				'description' => $row['description'],
-				'employee_first_name' => $row['employee_first_name'],
-				'employee_last_name' => $row['employee_last_name'],
-				'customer_name' => $row['customer_name']
-				));
+			'id' => $row['id'],
+			'customer_id' => $row['customer_id'],
+			'employee_id' => $row['employee_id'],
+			'start_date' => $row['start_date'],
+			'start_time' => $row['start_time'],
+			'end_date' => $row['end_date'],
+			'end_time' => $row['end_time'],
+			'description' => $row['description'],
+			'employee_first_name' => $row['employee_first_name'],
+			'employee_last_name' => $row['employee_last_name'],
+			'customer_name' => $row['customer_name']
+			));
 		}
 		return $customer_visits;
 	}
 
 	public static function find($id) {
 		$query = DB::connection()->prepare('SELECT Customervisit.id, Customervisit.customer_id, Customervisit.employee_id, Customervisit.start_date, Customervisit.start_time, Customervisit.end_date, Customervisit.end_time, Customervisit.description, Employee.last_name AS employee_last_name, Employee.first_name AS employee_first_name, Customer.name AS customer_name FROM Customervisit
-			INNER JOIN Customer
-			ON Customervisit.customer_id=Customer.id
-			INNER JOIN Employee 
-			ON Customervisit.employee_id=Employee.id
-			WHERE Customervisit.id = :id
-			LIMIT 1');
+		INNER JOIN Customer
+		ON Customervisit.customer_id=Customer.id
+		INNER JOIN Employee 
+		ON Customervisit.employee_id=Employee.id
+		WHERE Customervisit.id = :id
+		LIMIT 1');
 		$query->execute(array('id' => $id));
 		$row = $query->fetch();
 
 		if ($row) {
 			$customervisit = new self(array(
-				'id' => $row['id'],
-				'customer_id' => $row['customer_id'],
-				'employee_id' => $row['employee_id'],
-				'start_date' => $row['start_date'],
-				'start_time' => $row['start_time'],
-				'end_date' => $row['end_date'],
-				'end_time' => $row['end_time'],
-				'description' => $row['description'],
-				'employee_first_name' => $row['employee_first_name'],
-				'employee_last_name' => $row['employee_last_name'],
-				'customer_name' => $row['customer_name']
-				));
+			'id' => $row['id'],
+			'customer_id' => $row['customer_id'],
+			'employee_id' => $row['employee_id'],
+			'start_date' => $row['start_date'],
+			'start_time' => $row['start_time'],
+			'end_date' => $row['end_date'],
+			'end_time' => $row['end_time'],
+			'description' => $row['description'],
+			'employee_first_name' => $row['employee_first_name'],
+			'employee_last_name' => $row['employee_last_name'],
+			'customer_name' => $row['customer_name']
+			));
 
 			return $customervisit;
 		}
@@ -113,4 +124,6 @@ class Customervisit extends BaseModel {
 		}
 		return $errors;
 	}
+
+	
 }

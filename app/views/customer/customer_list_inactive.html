@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Epäaktivoidut asiakkaat</h1>
+
+<table class="table table-striped table-bordered">
+
+  <thead>
+    <tr>
+      <th>Nimi</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for customer in customers %}
+    <tr>
+      <td><a href="{{base_path}}/customer/view/{{customer.id}}">{{customer.name}}</a></td>
+      <th><form method="post" action = {{base_path}}/customer/activate/{{customer.id}}><button type="submit" class="btn btn-primary">Aktivoi</button></th>
+    </tr> 
+    {% endfor %}
+
+  </tbody>
+  
+</table>
+{% endblock %}

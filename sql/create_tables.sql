@@ -6,6 +6,7 @@ CREATE TABLE Account(
 
 CREATE TABLE Customer(
 	id SERIAL PRIMARY KEY,
+	active BOOLEAN NOT NULL,
 	name varchar(50) NOT NULL,
 	address varchar(120),
 	city varchar(50),
