@@ -13,6 +13,16 @@ class DateTimeParser {
 		return $split[2] . '-' . $split[1] . '-' . $split[0]; 
 	}
 
+	public function sql_date_to_date($sql_date) {
+		$split = explode("-", $sql_date);
+		return $split[2] . '.' . $split[1] . "." . $split[0];
+	}
+
+	public function sql_time_to_time($sql_time) {
+		$split = explode(":", $sql_time);
+		return $split[0] . ':' . $split[1];
+	}
+
 	/*
 		Converts time from format HH:MM to HH:MM:SS. Returns null if original time form is invalid.
 	*/

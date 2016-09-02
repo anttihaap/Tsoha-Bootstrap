@@ -14,23 +14,20 @@ class BaseController{
 
       $account = Account::find($user_id);
       return $account;
-    } else {
-      return null;
     }
+    return null;  
   }
 
   public static function get_employee_logged_in() {
     if (isset($_SESSION['user'])) {
       $user_id = $_SESSION['user'];
-
-      $employee = Employee::find_by_account_id($user_id);
-      return $employee;
+      return Employee::find_by_account_id($user_id);
     }
     return null;
   }
 
   public static function user_is_manager() {
-    
+
   }
 
 }

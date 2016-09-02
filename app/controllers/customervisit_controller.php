@@ -49,6 +49,53 @@ class CustomervisitController extends BaseController{
     }
   }
 
+  public static function edit($id) {
+    $customervisit = Customervisit::find($id);
+
+    //Check that customervisit is created by employee logged in.
+    if (self::get_employee_logged_in()->id == $customervisit->employee_id) {
+      $customers = Customer::all(array('active' => 1));
+      View::make('customervisits/customervisit_edit.html', array('customervisit' => $customervisit, 'customers' => $customers));
+    } else {
+      Redirect::to('/');
+    }
+  }
+
+  public static function update($id) {
+    $params = $_POST;
+
+    Kint::dump($params);
+    if ($params['customer_id'] == '') {
+      $customer_id = Customervisit::find($id)->customer_id;
+    } else {
+      $customer_id = $params['customer_id'];
+    }
+    $attributes = array(
+      'id' => $id,
+      'customer_id' => $customer_id,
+      'start_date' => $params['start_date'],
+      'start_time' => $params['start_time'],
+      'end_date' => $params['end_date'],
+      'end_time' => $params['end_time'],
+      'description' => $params['description']
+      );
+
+    $customervisit = new Customervisit($attributes);
+    $errors = $customervisit->errors();
+    if (count($errors) > 0) {
+      Redirect::to('/customervisit/edit/' . $id, array('attributes' => $attributes, 'errors' => $errors));
+    } else {
+      $customervisit->update();
+      Redirect::to('/customervisit/' . $id, array('message' => 'Asiakaskäynti päivitetty onnistuneesti!'));      
+    }
+  }
+
+  public static function destroy($id) {
+    $customervisit = new Customervisit(array('id' => $id));
+    $customervisit->destroy();
+    Redirect::to('/customervisits/list', array('message' => 'Asiakaskäynti on poistettu onnistuneesti!'));
+  }
+
   public static function search() {
     $params = $_POST;
 
@@ -76,8 +123,7 @@ class CustomervisitController extends BaseController{
     if (count($errors) > 0) {
       Redirect::to('/customervisits', array('errors' => $errors, 'attributes' => $params));
     } else {
-      Kint::dump($params);
-      Kint::dump($errors);
+      View::make('customervisits/customervisit_list.html', array('customervisits' => Customervisit::search($params)));
     }
   }
 }

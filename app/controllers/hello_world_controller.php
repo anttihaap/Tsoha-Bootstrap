@@ -7,8 +7,7 @@ class HelloWorldController extends BaseController{
   }
 
   public static function sandbox() {
-    Kint::dump(intval("013"));
-    Kint::dump(intval("0"));
-    Kint::dump(intval("00"));
+  	Kint::dump(self::get_employee_logged_in());
+  	Kint::dump(self::get_user_logged_in());
   }
 }

@@ -88,6 +88,18 @@ $routes->get('/customervisit/:id', 'check_logged_in', function($id) {
   CustomervisitController::view($id);
 });
 
+$routes->post('/customervisit/edit/:id', 'check_logged_in', function($id) {
+  CustomervisitController::update($id);
+});
+
+$routes->get('/customervisit/edit/:id', 'check_logged_in', function($id) {
+  CustomervisitController::edit($id);
+});
+
+$routes->post('/customervisit/destroy/:id', 'check_logged_in', function($id) {
+  CustomervisitController::destroy($id);
+});
+
 $routes->post('/customervisit/search', 'check_logged_in', function() {
   CustomervisitController::search();
 });

@@ -4,7 +4,9 @@ Yleisiä linkkejä:
 
 * [Testaus alusta (users.cs)](http://antthaap.users.cs.helsinki.fi/tsoha/)
 
-**Käyttäjätunnus: Testi** ja **salasana: salasana**
+**Käyttjätunukset:**
+* Käyttäjätunnus: Testi, Salasana: salasana - Työntekijä: **Antti Työläinen**
+* Käyttäjätunnus: Testi2, Salasana: salasana - Työntekijä: **Pentti Työläinen**
 
 Kirjaudut järjestelmään työntekijänä, jolloin voit lisätä vain omia asiakaskäyntejä.
 

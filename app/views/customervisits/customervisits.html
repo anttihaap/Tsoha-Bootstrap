@@ -7,7 +7,7 @@
 	<a href="{{base_path}}/customervisits/list" class="btn btn-default">Listaa asiakaskäynnit</a>
 </p>
 
-<h2>Haku (ei vielä toimi, listaus ja luonti toimii.</h2>
+<h2>Haku</h2>
 
 {% if errors %}
 <div class="alert alert-danger">
@@ -38,20 +38,21 @@
       {% endfor %}
     </select>
   </div>
+  <p>Rajoita käynnin alkamisaikaa:</p>
   <div class="form-group">
-    <label>Alkamispäivämäärä</label>
+    <label>Päivämäärästä lähtien</label>
     <input type="text" class="form-control" name="start_date" value="{{attributes.start_date}}">
   </div>
   <div class="form-group">
-    <label>Käynnin alkamisaika</label>
+    <label>Ajasta lähtien</label>
     <input type="text" class="form-control" name="start_time" value="{{attributes.start_time}}">
   </div>
   <div class="form-group">
-    <label>Loppumispäivämäärä</label>
+    <label>Päivämäärään mennessä</label>
     <input type="text" class="form-control" name="end_date" value="{{attributes.end_date}}">
   </div>
   <div class="form-group">
-    <label>Käynnin loppumisaika</label>
+    <label>Aikaan mennessä</label>
     <input type="text" class="form-control" name="end_time" value="{{attributes.end_time}}">
   </div>
   <div class="form-group">

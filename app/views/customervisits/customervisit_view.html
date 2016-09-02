@@ -7,18 +7,16 @@
 </div>
 {% endif %}
 <p>
-	<a href="" class="btn btn-default">Muokkaa tietoja</a>
+	<a href="{{base_path}}/customervisit/edit/{{customervisit.id}}" class="btn btn-default">Muokkaa käyntiä</a>
 </p>
 <p>
 	<div class="panel panel-default">
-		<div class="panel-heading">Asiakas</div>
-		<div class="panel-body">{{customervisit.customer_name}}</div>
+		<div class="panel-body"><b>Asiakas: </b>{{customervisit.customer_name}}</div>
 	</div>
 </p>
 <p>
 	<div class="panel panel-default">
-		<div class="panel-heading">Työntekijä</div>
-		<div class="panel-body">{{customervisit.employee_first_name}} {{customervisit.employee_last_name}}</div>
+		<div class="panel-body"><b>Työntekijä: </b>{{customervisit.employee_first_name}} {{customervisit.employee_last_name}}</div>
 	</div>
 </p>
 <p>
@@ -26,8 +24,6 @@
 		<div class="panel-heading">Käynnin alkamisaika</div>
 		<div class="panel-body">{{customervisit.start_date}} {{customervisit.start_time}}</div>
 	</div>
-</p>
-<p>
 	<div class="panel panel-default">
 		<div class="panel-heading">Käynnin loppumisaika</div>
 		<div class="panel-body">{{customervisit.end_date}} {{customervisit.end_time}}</div>
@@ -41,7 +37,7 @@
 	</div>
 </p>
 <p>
-	<form method="post" action="" style="display: inline-block;">
+	<form method="post" action="{{base_path}}/customervisit/destroy/{{customervisit.id}}" style="display: inline-block;">
 		<button type="submit" class="btn btn-danger">Poista asiakaskäynti</button>
 	</form>
 </p>

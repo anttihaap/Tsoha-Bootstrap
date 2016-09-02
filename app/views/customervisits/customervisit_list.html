@@ -27,10 +27,10 @@
       <td>{{visit.customer_name}}</td>
       <td>{{visit.employee_first_name}} {{visit.employee_last_name}}</td>
       <td>{{visit.start_date}} {{visit.start_time}}</td>
-      <td>{{visit.end_time}} {{visit.start_time}}</td>
+      <td>{{visit.end_date}} {{visit.start_time}}</td>
       <th><a class="btn btn-default btn-sm" href="{{base_path}}/customervisit/{{visit.id}}">Katso</a></th>
       {% if visit.employee_id == employee_logged_in.id %}
-      <th><a class="btn btn-default btn-sm" href="">Muokkaa tietoja</a></th>
+      <th><a class="btn btn-default btn-sm" href="{{base_path}}/customervisit/edit/{{visit.id}}">Muokkaa tietoja</a></th>
       {% else %}
       <th></th>
       {% endif %}

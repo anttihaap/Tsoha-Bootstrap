@@ -16,14 +16,20 @@ Järjestelmä toteutetaan php:lla ja tietokanta toimii PostgreSQL:llä. Toiminta
 ![](pictures/käyttötapauskaavio.png)
 
 * Asiakkaan lisääminen - työntekijä/hallinto
-* Asiakkaan tietojen muokkaaminen - työntekijä/hallinto
+* Asiakkaan tietojen muokkaaminen/poistaminen - työntekijä/hallinto
 * Asiakkaan tarkastelu - työntekijä/hallinto
  * Listaa asiakkaan tiedot ja listaa asiakkaan asiakaskäynnit järjestettynä ajanjakson mukaan.
+* Asiakkaan poistaminen
+ * Asiakkaan voi poistaa järjestelmästä vai jos asiakkaalla ei ole asiakaskäyntejä. Katso: epäatkvoiminen
+* Asiakkaan aktivoimnen/epäaktivoiminen
+ * Asiakkaan voi epäaktivoida: tällöin asiakas ei näy uuden asiakaskäynnin luomisen yhteydessä. Tarkoituksena on erittää vanhat ja nykyiset asiakkaat. Vanhoja asiakkaita ei voi poistaa, jos asiakaskäyntejä haluaa selata myöhemmin.
+
 * Asiakaskäynnin lisääminen - työntekijä/hallinto
-* Asiakaskäynnin muokkaaminen - työntekijä/hallinto
+ * Työntekijä voi lisätä asiakaskäyntejä, jossa hän on työntekijänä.
+* Asiakaskäynnin muokkaaminen/poistaminen - työntekijä/hallinto
 * Asiakaskäynnin tarkastelu - työntekijä/hallinto
 * Asiakaskäyntien haku - työntekijä/hallinto
- * Tietoja voidaan hakea työntekijän, asiakkaan ja ajan perusteella
+ * Tietoja voidaan hakea työntekijän, asiakkaan ja alkamisajan perusteella
 
 (toteutetaan jos kerkiää: )
 
@@ -89,13 +95,16 @@ Henkilötieto taulun, joka sisältää nimen, osoitteen jne., voisi luoda. Sitä
 
 Testialusta: [http://antthaap.users.cs.helsinki.fi/tsoha/](http://antthaap.users.cs.helsinki.fi/tsoha/)
 
-**Käyttjätunnus: Testi, salasana: salasana**
+**Käyttjätunukset:**
+* Käyttäjätunnus: Testi, Salasana: salasana - Työntekijä: **Antti Työläinen**
+* Käyttäjätunnus: Testi2, Salasana: salasana - Työntekijä: **Pentti Työläinen**
 
 Kirjaudut työntekijänä ja voit:
 
 * Voit muokata/lisätä/poistaa asiakkaita.
 * Lisätä **vain omia** asiakaskäyntejä.
-* Tarkastella asiakaskäyntejä. Muokkaus/poisto kesken.
+* Poistaa asiakaskäyntejä.
+* Hakea asiakaskäyntejä.
 
 Muista laittaa päivämäärät muodossa dd.mm.yyyy ja ajat muodossa hh:mm .
 
@@ -135,3 +144,16 @@ Tiedotossa config/enviroment.sh määritetään serveripään käyttäjätunnus.
 ## Käyttöliittymä ja järjestelmän komponentit
 
 ![](pictures/komponentit.png)
+
+## Mitä jäi tekemättä?
+
+Hallinto ja käyttäjien manageroiminen jäi kokonaan tekemättä.
+
+Työntekijöiden toiminnallisuus on melkein valmis. Parannettavaa:
+
+* Työntekijät voivat poistaa kaikkia asiakaskäyntejä, huono juttu.
+* Työntekijät voivat lisätä ja poistaa asiakkaita. Hallinnon tehtävä.
+
+Järjestelmässä on paljon haavoittuvuuksia, jos haluaa postilla testailla. Tarkistuksia puuttuu.
+
+Salasanojen suojaaminen.
