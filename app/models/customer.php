@@ -81,7 +81,7 @@ class Customer extends BaseModel {
     $query->execute(array('id' => $this->id));
     $row = $query->fetch();
     //There should be no customervisits for customer.
-    return $row == null;
+    return empty($row);
   }
 
   public function validate_name() {

@@ -15,7 +15,7 @@
     {% for customer in customers %}
     <tr>
       <td><a href="{{base_path}}/customer/view/{{customer.id}}">{{customer.name}}</a></td>
-      <th><form method="post" action = {{base_path}}/customer/activate/{{customer.id}}><button type="submit" class="btn btn-primary">Aktivoi</button></th>
+      <th><form method="post" action = {{base_path}}/customer/activate/{{customer.id}}><button type="submit" class="btn btn-primary">Aktivoi</button></form></th>
     </tr> 
     {% endfor %}
 

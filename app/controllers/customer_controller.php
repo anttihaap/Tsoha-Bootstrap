@@ -74,6 +74,7 @@ class CustomerController extends BaseController{
   public static function destroy($id) {
     $customer = new Customer(array('id' => $id));
     if ($customer->can_destroy()) {
+      $customer->destroy();
       Redirect::to('/customers', array('message' => 'Asiakas on poistettu onnistuneesti!'));
     } else {
       $errors[] = 'Et voi poistaa asiakasta, jolla on asiakaskäyntejä. Asiakkaan voi epäaktivoida.';
